@@ -1,82 +1,98 @@
 // bower:scss
 // endbower
 
+a {
+  text-decoration: none;
+  color: black;
+
+  &:visited {
+    color: black;
+  }
+}
+
 /* Fixed header with logo, search, and navigation menu tabs */
 header {
   position: absolute;
   top: 0;
   border-bottom: 1px lightgray solid;
   width: 100%;
-}
 
-/* Very top of header, which contains the logo */
-.top {
-  text-align: center;
-  margin: 20px auto;
-  height: 30px;
-}
+  /* Very top of header, which contains the logo */
+  .top {
+    text-align: center;
+    margin: 20px auto;
+    height: 30px;
+  }
 
-.lang {
-  text-align: right;
-  margin-right: 75px;
+  .lang {
+    text-align: right;
+    margin-right: 75px;
+  }
 }
 
 /* Navigation menu with tabs */
 nav {
   margin-left: 75px;
   font-size: 15px;
-}
 
-nav .tab {
-  margin-right: -4px;
-  display: inline-block;
-  padding: 5px;
-}
+  .tab {
+    margin-right: -4px;
+    display: inline-block;
+    padding: 5px;
 
-nav .tab:hover {
-  background-color: #1c94c4;
-}
+    &:hover {
+      background-color: #1c94c4;
+    }
+  }
 
-a {
-  text-decoration: none;
-  color: black;
-}
+  .nav-right {
+    display: block;
+    float: right;
+    margin-right: 75px;
+  }
 
-a:visited {
-  color: black;
+  .active {
+    border-bottom: 2px solid black;
+    color: #1c94c4;
+  }
 }
-
-nav .nav-right {
-  display: block;
-  float: right;
-  margin-right: 75px;
-}
-
-nav .active {
-  border-bottom: 2px solid black;
-  color: #1c94c4;
-}
-
 
 /* Container for the dynamically populated body */
 .container {
   margin-top: 150px;
   width: 100%;
-}
 
-/* Ensures dynamic content is consistently placed */
-.container .slide {
-  position: absolute;
-  height: 68%;
-  width: 100%;
-  overflow: hidden;
+  /* Ensures dynamic content is consistently placed */
+  .slide {
+    position: absolute;
+    height: 68%;
+    width: 100%;
+    overflow: hidden;
+
+    .content-top {
+      border-radius: 8px;
+
+      div {
+        text-align: center;
+        padding: 10px 30px;
+      }
+    }
+
+    .content-main {
+      background-color: rgba(111, 173, 221, 0.18);
+
+      div {
+        padding: 5px 30px;
+      }
+    }
+
+    .content-main, .content-main div {
+      height: 70%;
+    }
+  }
 }
 
 /* Styles below are for the specific pages of content */
-.content-top {
-  border-radius: 8px;
-}
-
 #slide1 .content-top {
   background-color: #b66e29;
 }
@@ -93,27 +109,8 @@ nav .active {
   height: 30%;
 }
 
-.content-top div {
-  text-align: center;
-  padding: 10px 30px;
-}
-
-.content-main {
-  background-color: rgba(111, 173, 221, 0.18);
-}
-
-.content-main, .content-main div {
-  height: 70%;
-}
-
-.content-main div {
-  padding: 5px 30px;
-}
-
 .panel {
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   margin-right: -4px;
   display: inline-block;
 
