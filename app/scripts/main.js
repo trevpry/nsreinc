@@ -4,11 +4,12 @@ $(document).ready(function(){
      **** HTML content to be injected into Container div based on tab selected ****
      ****************************************/
 
-    var home = 'partials/slides/home.html';
+    var home = 'partials/slides/home.php';
     var about = 'partials/slides/about.html';
     var location = 'partials/slides/location.html';
     var type = 'partials/slides/type.html';
     var faq = 'partials/slides/faq.html';
+    var search_results = 'partials/slides/search_results.php';
 
     var prev = 0;
     var current;
@@ -48,8 +49,21 @@ $(document).ready(function(){
         $('.active').removeClass('active');
         $(this).addClass('active');
 
+        //Subtracting 1 from current due to pages array being zero-based.
+        loadSlide(pages[current-1]);
+
+    });
+
+    $(document).on('keypress', '.search', function(event) {
+        if (event.which == 13){
+            loadSlide(search_results, 'query=' + $(this).val());
+            $(this).val('');
+        }
+    });
+
+    function loadSlide(slide, query){
         //Get the contents of the HTML file for the current tab.
-        $.get(pages[current-1], function(data){
+        $.get(slide, query, function(data){
             //Slides the previous tab out. Setting queue to false allows both animations to happen at once.
             $('.container .slide').hide('slide', {
                 direction: hide_dir,
@@ -59,12 +73,11 @@ $(document).ready(function(){
                 $(this).remove();
             });
 
-            //Slides the current tab in. Subtracting 1 from current due to pages array being zero-based.
+            //Slides the current tab in.
             $(data).hide().appendTo($('.container')).show('slide', {
                 direction: show_dir,
                 queue: false
             }, speed);
         });
-
-    });
+    }
 });

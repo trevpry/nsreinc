@@ -1,6 +1,8 @@
 <div class="slide" id="slide1">
 <div class = "content-top">
-<div class="panel panel-left">Some stuff here</div>
+<div class="panel panel-left">
+Some stuff here
+</div>
 <div class="panel panel-center-left">Some stuff here</div>
 <div class="panel panel-center-right">Some stuff here</div>
 <div class="panel panel-right">Some stuff here</div>
