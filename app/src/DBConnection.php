@@ -9,11 +9,9 @@ class DBConnection {
     private $host = 'localhost';
     private $user = 'root';
     private $password = 'root';
-    private $db = 'nsreinc';
+    private $db = 'nsreinc_db';
     private $status = 'not connected';
     private $conn;
-
-
 
     public function __construct(){
         $this->conn = new \mysqli(
@@ -22,7 +20,6 @@ class DBConnection {
             $this->password,
             $this->db
         );
-
 
         if ($this->conn->connect_error){
             $this->status = 'error';

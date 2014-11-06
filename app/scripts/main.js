@@ -6,10 +6,11 @@ $(document).ready(function(){
 
     var home = 'partials/slides/home.php';
     var about = 'partials/slides/about.html';
-    var location = 'partials/slides/location.html';
+    var properties = 'partials/slides/property/property_index.php';
     var type = 'partials/slides/type.html';
     var faq = 'partials/slides/faq.html';
     var search_results = 'partials/slides/search_results.php';
+    var propertyDetails = 'partials/slides/property/property_details.php';
 
     var prev = 0;
     var current;
@@ -23,7 +24,7 @@ $(document).ready(function(){
     var pages = [
         home,
         about,
-        location,
+        properties,
         type,
         faq
     ];
@@ -59,6 +60,10 @@ $(document).ready(function(){
             loadSlide(search_results, 'query=' + $(this).val());
             $(this).val('');
         }
+    });
+
+    $(document).on('click', '#property-detail-link', function(){
+      loadSlide(propertyDetails, 'query=' + $(this).attr('property-id'));
     });
 
     function loadSlide(slide, query){

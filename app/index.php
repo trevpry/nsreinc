@@ -18,6 +18,10 @@
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 
+  <?php
+    require('./vendor/autoload.php');
+  ?>
+
   </head>
   <body>
 
@@ -33,7 +37,7 @@
         <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
         <div id="1" class="tab home active"><a href="#index/0">Home</a></div>
         <div id="2" class="tab about"><a href="#index/1">About Us</a></div>
-        <div id="3" class="tab location"><a href="#index/2">Property Location</a></div>
+        <div id="3" class="tab location"><a href="#index/2">Properties</a></div>
         <div id="4" class="tab type"><a href="#index/3">Property Type</a></div>
         <div id="5" class="tab faq"><a href="#index/4">FAQ</a></div>
         <div class = "nav-right">
