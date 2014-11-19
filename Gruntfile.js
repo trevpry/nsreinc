@@ -195,7 +195,7 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         ignorePath: /^\/|\.\.\//,
-        src: ['<%= config.app %>/index.html']
+        src: ['<%= config.app %>/index.php']
       },
       sass: {
         src: ['<%= config.app %>/styles/{,*/}*.{scss,sass}'],
@@ -237,7 +237,8 @@ module.exports = function (grunt) {
           '<%= config.dist %>/styles'
         ]
       },
-      html: ['<%= config.dist %>/{,*/}*.html'],
+      html: ['<%= config.dist %>/{,*/}*.php'],
+      //php: ['<%= config.dist %>/{,*/}*.php'],
       css: ['<%= config.dist %>/styles/{,*/}*.css']
     },
 
@@ -324,6 +325,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
+            '{,*/}*.php',
             'styles/fonts/{,*/}*.*'
           ]
         }, {

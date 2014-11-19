@@ -8,7 +8,11 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" src="../bower_components/normalize.css/normalize.css">
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/blueimp-gallery/css/blueimp-gallery.css" />
+    <link rel="stylesheet" href="../bower_components/blueimp-gallery/css/blueimp-gallery-indicator.css" />
+    <link rel="stylesheet" href="../bower_components/blueimp-gallery/css/blueimp-gallery-video.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -31,38 +35,46 @@
 
     <!-- Navigation tabs -->
     <header id="header">
-      <div class="top">SUM</div>
-      <div class="lang">English</div>
-      <nav id="menu">
-        <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
-        <div id="1" class="tab home active"><a href="#index/0">Home</a></div>
-        <div id="2" class="tab about"><a href="#index/1">About Us</a></div>
-        <div id="3" class="tab location"><a href="#index/2">Properties</a></div>
-        <div id="4" class="tab type"><a href="#index/3">Property Type</a></div>
-        <div id="5" class="tab faq"><a href="#index/4">FAQ</a></div>
-        <div class = "nav-right">
-          <input type="text" class="search" placeholder="search">
-        </div>
-      </nav>
+        <div class="container">
+          <div class="nav-content">
+            <div class="top">
+              <img src="./images/logo.png">
+            </div>
+            <nav id="menu">
+              <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
+              <div id="1" class="tab home active"><a href="#">Home</a></div>
+              <div id="2" class="tab consult"><a href="#">Consultation</a></div>
+              <div id="3" class="tab commercial"><a href="#">Commercial Listings</a></div>
+              <div id="4" class="tab residential"><a href="#">Residential Listings</a></div>
+              <div id="5" class="tab apts"><a href="#">Available Apartments</a></div>
+              <div id="6" class="tab portfolio"><a href="#">Portfolio</a></div>
+            </nav>
+          </div>
+      </div>
     </header>
 
     <div class="container">
       <!--The content of the page, determined by the tab clicked, goes here.-->
+      <div class="main-content">
+
+      </div>
 
     </div>
 
-    <footer id="footer">
-      <div class="links">
-        <span><a href="#">Link 1</a> | <a href="#">Link 2</a> | <a href="#">Link 3</a></span>
-      </div>
-      <div class="copy">Copyright</div>
-    </footer>
+
 
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-helper.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-fullscreen.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-indicator.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-video.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
+    <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
     <script src="../bower_components/jquery-ui/jquery-ui.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -78,7 +90,7 @@
     </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="./scripts/main.js"></script>
         <!-- endbuild -->
 </body>
 </html>

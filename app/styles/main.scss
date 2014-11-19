@@ -1,5 +1,30 @@
 // bower:scss
 // endbower
+$header-height: 207px;
+//$footer-height: 126px;
+$top-height: 165px;
+$page-width: 1024px;
+$logo-height: 136px;
+
+//colors
+$light-grey: rgba(168,168,168, 1);
+$light-grey-trans: rgba(168,168,168,0.2);
+$black: rgba(0,0,0,1);
+
+@mixin fading-border {
+  //border-width: 0 0 1px 0;
+  border-image:
+-webkit-linear-gradient(left, $light-grey-trans, $light-grey 50%, $light-grey-trans) 100% 1;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+body {
+  color: $light-grey;
+}
 
 a {
   text-decoration: none;
@@ -10,68 +35,99 @@ a {
   }
 }
 
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
 h2 {
   text-align: center ;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: normal;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: normal;
 }
 
 /* Fixed header with logo, search, and navigation menu tabs */
 header {
   position: absolute;
-  top: 0;
-  border-bottom: 1px lightgray solid;
+  top: -8px;
   width: 100%;
+  height: $header-height;
+  margin: 0 auto;
 
   /* Very top of header, which contains the logo */
   .top {
     text-align: center;
-    margin: 20px auto;
-    height: 30px;
+    height: $top-height;
+    background-image: url('../../app/images/header-image.png');
+    img {
+      position: relative;
+      right: $page-width / 2 + 7px;
+      top: ($top-height - $logo-height) / 2;
+    }
+
   }
 
-  .lang {
-    text-align: right;
-    margin-right: 75px;
+  .nav-content {
+    border-width: 0 0 1px 0;
+    @include fading-border();
   }
 }
 
 /* Navigation menu with tabs */
 nav {
-  margin-left: 75px;
   font-size: 15px;
+  height: 43px;
+  text-align: center;
 
   .tab {
     margin-right: -4px;
     display: inline-block;
-    padding: 5px;
+    padding: 20px 5px 5px 5px;
 
     &:hover {
-      background-color: #1c94c4;
+      //background-color: #1c94c4;
     }
   }
 
-  .nav-right {
-    display: block;
-    float: right;
-    margin-right: 75px;
-  }
+//  .nav-right {
+//    display: block;
+//    float: right;
+//    margin-right: 75px;
+//  }
 
   .active {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid $black;
     color: #1c94c4;
   }
 }
 
 /* Container for the dynamically populated body */
 .container {
-  margin-top: 150px;
-  width: 100%;
+  //margin-top: 150px;
+  width: $page-width;
+  margin: 0 auto;
+
+  .main-content {
+    //fixes weird off-center issue
+    padding-left: 7px;
+  }
 
   /* Ensures dynamic content is consistently placed */
-  .slide {
+  .slide-page {
     position: absolute;
-    height: 68%;
-    width: 100%;
+    //height: 68%;
+    width: $page-width;
     overflow: hidden;
+    margin: $header-height auto 0 auto;
+    text-align: center;
 
     .content-top {
       border-radius: 8px;
@@ -82,77 +138,137 @@ nav {
       }
     }
 
+
     .content-main {
       background-color: rgba(111, 173, 221, 0.18);
 
       div {
-        padding: 5px 30px;
+        //padding: 5px 30px;
       }
     }
 
-    .content-main, .content-main div {
-      height: 70%;
+//    .content-main, .content-main div {
+//      height: 70%;
+//    }
+  }
+}
+
+.hero-unit {
+  //margin-top: $header-height;
+  height: 130px;
+  border-width: 0 0 1px 0;
+  @include fading-border();
+  //@include vertical-align();
+  .hero-body {
+    @include vertical-align();
+  }
+}
+
+.middle {
+  height: 130px;
+  width: 100%;
+  border-width: 0 0 1px 0;
+
+  @include fading-border();
+  .left, .right {
+    box-sizing: border-box;
+    padding: 0 50px;
+    width: 50%;
+    float: left;
+  }
+}
+
+.blueimp-gallery-carousel {
+  display: block;
+  //@include vertical-align;
+  width: $page-width * .66;
+
+  //padding-top: 20%;
+  padding-bottom: 20%;
+  div .slides {
+
+    .slide {
+
     }
   }
 }
 
-/* Styles below are for the specific pages of content */
-#slide1 .content-top {
-  background-color: #b66e29;
+
+#links {
+  @include vertical-align;
 }
 
-#slide2 .content-top {
-  background-color: #39b660;
+.below-carousel {
+  //width: 80%;
+  padding: 20px 144px 0 144px;
 }
 
-#slide3 .content-top {
-  background-color: #b6606b;
-}
-
-.content-top, .content-top div {
-  height: 30%;
-}
-
-.panel {
-  box-sizing: border-box;
-  margin-right: -4px;
-  display: inline-block;
-
-}
-
-.panel-left, .panel-right {
-  width: 20%;
-}
-
-.panel-center-left, .panel-center-right {
-  width: 30%;
-}
-
-.content-main .panel-left, .content-main .panel-center-left, .content-main .panel-center-right {
-  border-right: 2px dotted lightgray;
-  height: 100%;
-}
+///* Styles below are for the specific pages of content */
+//#slide1 .content-top {
+//  background-color: #b66e29;
+//}
+//
+//#slide2 .content-top {
+//  background-color: #39b660;
+//}
+//
+//#slide3 .content-top {
+//  background-color: #b6606b;
+//}
+//
+//.content-top, .content-top div {
+//  height: 30%;
+//}
+//
+//.panel {
+//  box-sizing: border-box;
+//  margin-right: -4px;
+//  display: inline-block;
+//
+//}
+//
+//.panel-left, .panel-right {
+//  width: 20%;
+//}
+//
+//.panel-center-left, .panel-center-right {
+//  width: 30%;
+//}
+//
+//.content-main .panel-left, .content-main .panel-center-left, .content-main .panel-center-right {
+//  border-right: 2px dotted lightgray;
+//  height: 100%;
+//}
 
 /* Footer absolutely positioned at bottom of page */
 footer {
   font-size: 12px;
   text-align: center;
+
+
   margin: 5px auto;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 65px;
+  width: $page-width;
   line-height: 2;
-}
 
-.property {
-  text-align: center;
-  margin: auto;
 
-  .title {
-    font-weight: bold;
+  & > div {
+    vertical-align: middle;
+    text-align: center;
+    border-width: 1px 0;
+    width: 100%;
+    @include fading-border;
+
   }
 }
+
+//.property {
+//  text-align: center;
+//  margin: auto;
+//
+//  .title {
+//    font-weight: bold;
+//  }
+//}
 
 
 .browsehappy {

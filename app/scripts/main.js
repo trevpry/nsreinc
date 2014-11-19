@@ -1,16 +1,16 @@
+'use strict';
 $(document).ready(function(){
 
     /***************************************
      **** HTML content to be injected into Container div based on tab selected ****
      ****************************************/
 
-    var home = 'partials/slides/home.php';
-    var about = 'partials/slides/about.html';
-    var properties = 'partials/slides/property/property_index.php';
-    var type = 'partials/slides/type.html';
-    var faq = 'partials/slides/faq.html';
-    var search_results = 'partials/slides/search_results.php';
-    var propertyDetails = 'partials/slides/property/property_details.php';
+    var home = './partials/slides/home.php';
+    var consultation = './partials/slides/home.php';
+    var commercial = './partials/slides/property/property_index.php';
+    var residential = './partials/slides/home.php';
+    var apartments = './partials/slides/home.php';
+    var portfolio = './partials/slides/home.php';
 
     var prev = 0;
     var current;
@@ -18,19 +18,28 @@ $(document).ready(function(){
     var show_dir = 'left';
 
     //Speed of horizontal transition in milliseconds
-    var speed = 500;
+    var speed = 600;
 
     //Corresponds to variables with HTML content. Must be in the same order as the tabs.
+    //var pages = [
+    //    home,
+    //    about,
+    //    properties,
+    //    type,
+    //    faq
+    //];
+
     var pages = [
         home,
-        about,
-        properties,
-        type,
-        faq
+        consultation,
+        commercial,
+        residential,
+        apartments,
+        portfolio
     ];
 
     //Loads the home page into the container div
-    $('.container').load(home);
+    $('.main-content').load(home, loadGallery);
 
     /*
      * Fires when a tab is clicked.
@@ -62,15 +71,16 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on('click', '#property-detail-link', function(){
-      loadSlide(propertyDetails, 'query=' + $(this).attr('property-id'));
-    });
+    //$(document).on('click', '#property-detail-link', function(){
+    //  loadSlide(propertyDetails, 'query=' + $(this).attr('property-id'));
+    //});
 
-    function loadSlide(slide, query){
+    function loadSlide(slide){
         //Get the contents of the HTML file for the current tab.
-        $.get(slide, query, function(data){
+
+        $.get(slide, function(data){
             //Slides the previous tab out. Setting queue to false allows both animations to happen at once.
-            $('.container .slide').hide('slide', {
+            $('.main-content .slide-page').hide('slide', {
                 direction: hide_dir,
                 queue: false
             }, speed, function(){
@@ -79,10 +89,30 @@ $(document).ready(function(){
             });
 
             //Slides the current tab in.
-            $(data).hide().appendTo($('.container')).show('slide', {
+            $(data).hide().appendTo($('.main-content')).show('slide', {
                 direction: show_dir,
                 queue: false
-            }, speed);
+            }, speed, function(){
+                if (slide == home){
+                    loadGallery();
+                }
+            });
+
+
         });
     }
+
+    function loadGallery(){
+        blueimp.Gallery(
+            document.getElementById('links').getElementsByTagName('a'),
+            {
+                container: '#blueimp-gallery-carousel',
+                carousel: true
+            }
+        );
+    }
+
+
+
+
 });
