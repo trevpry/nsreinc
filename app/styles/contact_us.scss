@@ -1,0 +1,59 @@
+$property-height: 150px * 1.5;
+$property-details-margin: 0 0 5px 20px;
+
+@import "partials/colors.scss";
+@import "partials/mixins.scss";
+
+.contact {
+  h2, h3, ul {
+    text-align: left;
+    margin-left: 50px;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    a {
+      text-decoration: underline;
+    }
+    li {
+      line-height: 1.5;
+    }
+  }
+
+}
+
+.login {
+  cursor: pointer;
+  position: relative;
+  bottom: 60px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid red;
+  float: right;
+}
+
+
+.ui-dialog {
+  background: $light-grey;
+  color: $black;
+}
+
+#dialog-form {
+  .validate-tips {
+    p {
+      margin: 0;
+      padding: 0;
+      color: $alert-red;
+    }
+  }
+  form {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    label {
+      width: 100px;
+      float: left;
+    }
+  }
+}

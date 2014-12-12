@@ -1,27 +1,20 @@
 // bower:scss
 // endbower
-$header-height: 207px;
-//$footer-height: 126px;
-$top-height: 165px;
-$page-width: 1024px;
-$logo-height: 136px;
 
-//colors
-$light-grey: rgba(168,168,168, 1);
-$light-grey-trans: rgba(168,168,168,0.2);
-$black: rgba(0,0,0,1);
+@import "partials/sizes.scss";
+@import "partials/colors.scss";
+@import "partials/mixins.scss";
+@import "partials/_form-dialog.scss";
+@import "property_index.scss";
+@import "user-index.scss";
+@import "contact_us.scss";
+@import "admin.scss";
 
-@mixin fading-border {
-  //border-width: 0 0 1px 0;
-  border-image:
--webkit-linear-gradient(left, $light-grey-trans, $light-grey 50%, $light-grey-trans) 100% 1;
+//prevents page from jumping to the right
+html {
+  overflow-y: scroll;
 }
 
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-}
 body {
   color: $light-grey;
 }
@@ -53,6 +46,25 @@ h4 {
   font-size: 16px;
   font-weight: normal;
 }
+
+.border-bottom {
+  border-width: 0 0 1px 0;
+  @include fading-border();
+}
+
+.border-top {
+  border-width: 1px 0 0 0;
+  @include fading-border();
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.auth, .hidden {
+  visibility: hidden;
+}
+
 
 /* Fixed header with logo, search, and navigation menu tabs */
 header {
@@ -87,14 +99,39 @@ nav {
   height: 43px;
   text-align: center;
 
+  #nav-tabs {
+    list-style: none;
+  }
+
   .tab {
     margin-right: -4px;
     display: inline-block;
-    padding: 20px 5px 5px 5px;
+    padding: 20px 15px 5px 15px;
+
 
     &:hover {
       //background-color: #1c94c4;
     }
+  }
+
+  #nav-tabs {
+    margin: 0 auto;
+    //padding-bottom: 5px;
+    position: relative;
+
+    li {
+      //border: 1px solid pink;
+      margin-bottom: 1px;
+    }
+  }
+
+  #magic-line {
+    position: absolute;
+    background: red;
+    //margin-bottom: 5px;
+    border-top: 1px solid black;
+    //height: 10px;
+    //list-style: none;
   }
 
 //  .nav-right {
@@ -104,8 +141,8 @@ nav {
 //  }
 
   .active {
-    border-bottom: 2px solid $black;
-    color: #1c94c4;
+//    border-bottom: 2px solid $black;
+//    color: #1c94c4;
   }
 }
 
@@ -140,27 +177,54 @@ nav {
 
 
     .content-main {
-      background-color: rgba(111, 173, 221, 0.18);
+      //background-color: rgba(111, 173, 221, 0.18);
+      padding: 15px 144px;
 
-      div {
-        //padding: 5px 30px;
+      .content {
+        text-align: left;
       }
+
+//      .contact {
+//        h2, h3, ul {
+//          text-align: left;
+//          margin-left: 50px;
+//        }
+////left        h3, ul {
+////          text-align: center;
+////          //margin-left: 30px;
+////        }
+//        ul {
+//          list-style: none;
+//          padding-left: 0;
+//          a {
+//            text-decoration: underline;
+//          }
+//          li {
+//            line-height: 1.5;
+//          }
+//        }
+//      }
     }
 
-//    .content-main, .content-main div {
-//      height: 70%;
-//    }
   }
 }
 
 .hero-unit {
   //margin-top: $header-height;
   height: 130px;
-  border-width: 0 0 1px 0;
-  @include fading-border();
+//  border-width: 0 0 1px 0;
+//  @include fading-border();
   //@include vertical-align();
   .hero-body {
-    @include vertical-align();
+    //@include vertical-align();
+    h3 {
+      text-align: left;
+    }
+    div {
+      padding: 15px 144px;
+
+      text-align: left;
+    }
   }
 }
 
@@ -178,29 +242,48 @@ nav {
   }
 }
 
-.blueimp-gallery-carousel {
-  display: block;
-  //@include vertical-align;
-  width: $page-width * .66;
+.carousel {
+  margin: 15px 144px 0 144px;
+  .blueimp-gallery-carousel {
+    display: block;
+    //@include vertical-align;
+    width: 100%;
+    height: 120px;
 
-  //padding-top: 20%;
-  padding-bottom: 20%;
-  div .slides {
+    padding-bottom: 20%;
+    div .slides {
 
-    .slide {
+      .slide {
 
+      }
     }
   }
-}
 
 
-#links {
-  @include vertical-align;
+  #links {
+    @include vertical-align;
+  }
 }
 
 .below-carousel {
   //width: 80%;
-  padding: 20px 144px 0 144px;
+  padding: 10px 144px 0 144px;
+  div, h3 {
+    padding-bottom: 10px;
+    text-align: left;
+  }
+
+  ol {
+    counter-reset: item;
+    text-align: left;
+  }
+  ol li {
+    list-style: none;
+  }
+  ol li:before {
+    content: "(" counter(item) ") ";
+    counter-increment: item;
+  }
 }
 
 ///* Styles below are for the specific pages of content */
@@ -254,9 +337,9 @@ footer {
   & > div {
     vertical-align: middle;
     text-align: center;
-    border-width: 1px 0;
+    //border-width: 1px 0 0 0;
     width: 100%;
-    @include fading-border;
+    //@include fading-border;
 
   }
 }

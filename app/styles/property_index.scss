@@ -1,0 +1,91 @@
+$property-height: 150px * 1.5;
+$property-details-margin: 0 0 5px 20px;
+
+@import "partials/colors.scss";
+@import "partials/mixins.scss";
+
+
+.form-add-property {
+  text-align: left;
+  padding: 21px;
+
+  h3 {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  form {
+    display: none;
+    textarea {
+      width: 40px;
+      height: 30px;
+    }
+  }
+}
+
+.property {
+  padding: 21px;
+  text-align: left;
+  height: $property-height;
+  color: $light-grey;
+
+  div {
+    display: inline-block;
+  }
+
+  .property-image {
+    height: $property-height;
+    width: $property-height;
+    //border: 1px solid black;
+    vertical-align: top;
+    margin-right: 80px;
+    img {
+      height: $property-height;
+      width: $property-height;
+    }
+  }
+
+  .property-details {
+    vertical-align: top;
+    font-size: 15px;
+    p {
+      margin: $property-details-margin;
+
+      .label {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .admin {
+    float: right;
+    cursor: pointer;
+    div {
+      text-decoration: underline;
+    }
+
+  }
+}
+
+.highlights-list {
+  margin: $property-details-margin;
+  padding: 0;
+  font-weight: bold;
+
+  li {
+    font-weight: normal;
+    margin: $property-details-margin;
+  }
+
+  li.bold {
+    font-weight: bold;
+  }
+
+  li:nth-child(1) {
+    margin-top: 5px;
+  }
+
+//  li:nth-child(n+2) {
+//    margin: $property-details-margin;
+//
+//  }
+}

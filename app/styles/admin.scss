@@ -1,0 +1,10 @@
+
+
+@import "partials/colors.scss";
+@import "partials/mixins.scss";
+
+.user-form {
+  text-align: left;
+  margin: 10px;
+  @include flush-inputs(150px);
+}

@@ -5,6 +5,8 @@
     "jquery": "~1.11.1",
     "modernizr": "~2.8.2",
     "blueimp-gallery": "~2.15.2",
-    "jquery-ui": "~1.11.2"
+    "jquery-ui": "~1.11.2",
+    "jquery-leanmodal": "*",
+    "autoNumeric": "~1.9.26"
   }
 }

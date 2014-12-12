@@ -1,3 +1,10 @@
+<?php
+require('./vendor/autoload.php');
+session_start();
+$_SESSION['test'] = 'test';
+//$_SESSION['logged_in'] = false;
+?>
+
 <!doctype html>
 <html class="no-js">
   <head>
@@ -22,10 +29,6 @@
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
 
-  <?php
-    require('./vendor/autoload.php');
-  ?>
-
   </head>
   <body>
 
@@ -40,14 +43,37 @@
             <div class="top">
               <img src="./images/logo.png">
             </div>
-            <nav id="menu">
-              <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
-              <div id="1" class="tab home active"><a href="#">Home</a></div>
-              <div id="2" class="tab consult"><a href="#">Consultation</a></div>
-              <div id="3" class="tab commercial"><a href="#">Commercial Listings</a></div>
-              <div id="4" class="tab residential"><a href="#">Residential Listings</a></div>
-              <div id="5" class="tab apts"><a href="#">Available Apartments</a></div>
-              <div id="6" class="tab portfolio"><a href="#">Portfolio</a></div>
+<!--            <nav id="menu" class="nav-wrap">-->
+<!--              <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
+<!--              <div id="1" class="tab home left-pos active" page="home"><a href="#">Home</a></div>-->
+<!--              <div id="2" class="tab consult" page="consultation"><a href="#">Consultation</a></div>-->
+<!--              <div id="3" class="tab commercial editable" page="commercial"><a href="#">Commercial Listings</a></div>-->
+<!--              <div id="4" class="tab residential editable" page="residential"><a href="#">Residential Listings</a></div>-->
+<!--              <div id="5" class="tab apts editable" page="apartments"><a href="#">Available Apartments</a></div>-->
+<!--              <div id="6" class="tab portfolio" page="portfolio"><a href="#">Portfolio</a></div>-->
+<?php
+//                if ($_SESSION['logged_in']){
+//                  echo '<div id="8" class="tab admin editable" page="admin"><a href="#">Admin</a></div>';
+//                }
+?>
+<!--            </nav>-->
+            <nav id="menu" class="nav-wrap">
+              <ul class="group" id="nav-tabs">
+                <!-- Ids should be in numeric order starting with zero. ID number determines direction of scroll.-->
+                <li id="1" class="tab home active" page="home"><a href="#">Home</a></li>
+                <li id="2" class="tab consult" page="consultation"><a href="#">Consultation</a></li>
+                <li id="3" class="tab commercial editable" page="commercial"><a href="#">Commercial Listings</a></li>
+                <li id="4" class="tab residential editable" page="residential"><a href="#">Residential Listings</a></li>
+                <li id="5" class="tab apts editable" page="apartments"><a href="#">Available Apartments</a></li>
+                <li id="6" class="tab portfolio" page="portfolio"><a href="#">Portfolio</a></li>
+                <li id="7" class="tab contact-us" page="contact"><a href="#">Contact Us</a></li>
+                <?php
+                if ($_SESSION['logged_in']){
+                  echo '<li id="8" class="tab admin editable" page="admin"><a href="#">Admin</a></li>';
+                }
+                ?>
+              </ul>
+
             </nav>
           </div>
       </div>
@@ -76,6 +102,7 @@
     <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
     <script src="../bower_components/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
     <script src="../bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="../bower_components/autoNumeric/autoNumeric.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -90,7 +117,11 @@
     </script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
+        <script src="./scripts/form-dialog.js"></script>
         <script src="./scripts/main.js"></script>
+        <script src="./scripts/authentication.js"></script>
+        <script src="./scripts/property-index.js"></script>
+        <script src="./scripts/user-index.js"></script>
         <!-- endbuild -->
 </body>
 </html>

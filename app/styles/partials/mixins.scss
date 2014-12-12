@@ -1,0 +1,21 @@
+@import "colors.scss";
+
+@mixin fading-border {
+  //border-width: 0 0 1px 0;
+  border-image:
+  -webkit-linear-gradient(left, $light-grey-trans, $light-grey 50%, $light-grey-trans) 100% 1;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@mixin flush-inputs($label-size: 120px) {
+  label {
+    text-align: left;
+    float: left;
+    width: $label-size;
+  }
+}
